@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-class JsonFields extends Component {
+class JSONFields extends Component {
 
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {fields: []}
     this.addField = this.addField.bind(this)
     this.buildJSON = this.buildJSON.bind(this)
@@ -19,33 +19,41 @@ class JsonFields extends Component {
     for (let i = 0; i < size; ++i) {
       obj[keys[i].value] = values[i].value
     }
-    console.log(obj)
+
+    this.props.method(obj)
   }
 
   addField () {
     var field = (
       <div>
-        <input type="text" className="keys"/> : <input type="text" className="values"/>
+        <input type="text" className="keys elements" onChange={this.buildJSON}/> : <input type="text" className="values" onChange={this.buildJSON}/>
       </div>
     )
     this.setState(function (prev) {
-      return { fields: prev.fields.concat(field)}
+      return { 
+        fields: prev.fields.concat(field)
+      }
     })
   }
 
   render () {
     return (
       <div className="content">
-        <span>{"{"}</span>
+        <span className="element">{"{"}</span>
           {this.state.fields}
-          <span>{"}"}</span>
-          <br/>
-        <input type="button" value="+" onClick={this.addField}/>
+        <span className="element">{"}"}</span>
+        <br/>
+        <input type="button" value="+" onClick={this.addField} />
         <input type="button" value="build" onClick={this.buildJSON}/>
+        <div className="code">
+          <pre>
+            <code>{JSON.stringify(this.state.json)}</code>
+          </pre>
+        </div>
       </div>
     )
   }
 
 }
 
-export default JsonFields
+export default JSONFields

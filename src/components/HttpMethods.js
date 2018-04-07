@@ -3,18 +3,19 @@ import React, { Component } from 'react'
 class HttpMethods extends Component {
   constructor (props) {
     super(props)
-    this.state = {methods: ['GET', 'POST']}
+    this.updateMethod = this.updateMethod.bind(this)
+  }
+
+  updateMethod () {
+    this.props.method(document.querySelector('select').value)
   }
 
   render () {
     return (
       <div>
-        <select>
-          {
-            this.state.methods.map(function (method, index){
-             return <option value={method} index={index}>{method}</option>
-            })
-          }
+        <select onChange={this.updateMethod}>
+          <option value="GET" index="1">GET</option>
+          <option value="GET" index="2">POST</option>
         </select>
       </div>
     )
