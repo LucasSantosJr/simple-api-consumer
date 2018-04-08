@@ -8,7 +8,7 @@ Instale todas as dependências:
 
 ```npm install```
 
-Para iniciar o servidor e abrir o app com o nevegador padrão:
+Para iniciar o servidor de desenvolvimento e abrir o app com o nevegador padrão:
 
 ```npm start```
 
