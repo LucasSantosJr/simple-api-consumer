@@ -1,5 +1,7 @@
 # simple-api-consumer
 
+## Envie e receba requisições ```GET``` and ```POST```
+
 Instale todas as dependências:
 
 ```npm install```
