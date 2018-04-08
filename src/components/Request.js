@@ -3,12 +3,34 @@ import React, { Component } from 'react'
 class Request extends Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {result: ''}
+    this.fetchData = this.fetchData.bind(this)
+  }
+
+   async fetchData () {
+     let options = {
+       method: this.props.settings.method
+     }
+    if (options.method === 'POST') {
+      options.body = JSON.stringify(this.props.settings.json)
+    }
+    return fetch(`http://${this.props.settings.url}`, options)
+      .then((response) =>{
+        return response.json()
+      }).then((response) => {
+        this.setState({result: response})
+      }).catch((err) =>{
+      this.setState({result: err.message})
+    })
   }
 
   render () {
     return (
       <div>
+        <input type="button" value="request" onClick={this.fetchData}/>
+        <div>
+        {JSON.stringify(this.state.result)}
+        </div>
       </div>
     )
   }

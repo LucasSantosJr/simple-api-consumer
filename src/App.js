@@ -8,7 +8,7 @@ import './App.css';
 class App extends Component {
   constructor () {
     super()
-    this.state = {url: '', method: '', json:  ''}
+    this.state = {url: '', method: 'GET', json:  '', location: '/'}
     this.updateURL = this.updateURL.bind(this)
     this.updateMethod = this.updateMethod.bind(this)
     this.updateJSON = this.updateJSON.bind(this)

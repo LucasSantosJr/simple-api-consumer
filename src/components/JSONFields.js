@@ -4,7 +4,7 @@ class JSONFields extends Component {
 
   constructor (props) {
     super(props)
-    this.state = {fields: []}
+    this.state = {fields: [], json: ''}
     this.addField = this.addField.bind(this)
     this.buildJSON = this.buildJSON.bind(this)
   }
@@ -19,6 +19,8 @@ class JSONFields extends Component {
     for (let i = 0; i < size; ++i) {
       obj[keys[i].value] = values[i].value
     }
+
+    this.setState({json: obj})
 
     this.props.method(obj)
   }
@@ -44,7 +46,6 @@ class JSONFields extends Component {
         <span className="element">{"}"}</span>
         <br/>
         <input type="button" value="+" onClick={this.addField} />
-        <input type="button" value="build" onClick={this.buildJSON}/>
         <div className="code">
           <pre>
             <code>{JSON.stringify(this.state.json)}</code>

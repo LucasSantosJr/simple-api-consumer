@@ -15,7 +15,7 @@ class HttpMethods extends Component {
       <div>
         <select onChange={this.updateMethod}>
           <option value="GET" index="1">GET</option>
-          <option value="GET" index="2">POST</option>
+          <option value="POST" index="2">POST</option>
         </select>
       </div>
     )
