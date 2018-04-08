@@ -14,14 +14,14 @@ class Request extends Component {
     if (options.method === 'POST') {
       options.body = JSON.stringify(this.props.settings.json)
     }
-    return fetch(`http://${this.props.settings.url}`, options)
-      .then((response) =>{
-        return response.json()
-      }).then((response) => {
-        this.setState({result: response})
-      }).catch((err) =>{
+    
+    try {
+      let response = await  (await fetch(`http://${this.props.settings.url}`, options)).json()
+      this.setState({result: response})
+    } catch (err) {
       this.setState({result: err.message})
-    })
+    }
+
   }
 
   render () {
