@@ -1,6 +1,8 @@
 # simple-api-consumer
 
-## Envie e receba requisições ```GET``` and ```POST```
+## Envie requisições ```GET``` and ```POST```
+
+### Envie e receba objetos JSON
 
 Instale todas as dependências:
 
